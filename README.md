@@ -1,58 +1,47 @@
-# Actor System with Decorators and Proxies
+# 🎭 Actor System with Decorators and Proxies  
 
-Aquest projecte Java implementa un sistema d'actors amb capacitats de decoració i ús de proxies. Els actors poden enviar-se missatges, i el comportament d’aquests es pot modificar dinàmicament mitjançant patrons com **Decorator** i **Proxy**.
+This Java project implements an **actor system** with support for **decorators** and **proxies**.  
+Actors can send messages to each other, and their behavior can be dynamically modified using design patterns like **Decorator** and **Proxy**.  
 
-## 📦 Estructura del projecte
+---
 
-- `MainFunctions.java`: Conté funcions de test per provar els diferents actors i decoradors.
-- `ActorContext`, `ActorProxy`: Implementació del sistema d’actors i les seves interfícies de comunicació.
-- `Decorator`: Paquet amb decoradors com:
-  - `FirewallDecorator`
-  - `LambdaFirewallDecorator`
-  - `EncryptionDecorator`
-- `Proxy`: Implementació del patró Proxy i Dynamic Proxy (`DynamicProxy`, `IService`, `InsultService`, etc.)
-- `ActorProperties`: Inclou actors específics com `InsultActor`, `RingActor`, `PimPom`, etc.
+## 📦 Project Structure  
 
-## 🚀 Tests disponibles (`MainFunctions`)
+- **MainFunctions.java** → Test functions to try different actors and decorators.  
+- **ActorContext, ActorProxy** → Core implementation of the actor system and communication interfaces.  
+- **Decorator** → Package with decorators such as:  
+  - `FirewallDecorator`  
+  - `LambdaFirewallDecorator`  
+  - `EncryptionDecorator`  
+- **Proxy** → Implementation of Proxy and Dynamic Proxy patterns (`DynamicProxy`, `IService`, `InsultService`, etc.).  
+- **ActorProperties** → Specific actors like `InsultActor`, `RingActor`, `PimPom`, etc.  
 
-### ✅ `testHelloWorld()`
-Crea un actor bàsic i li envia missatges "Hello World!" i "Bye!". Mostra com funciona la comunicació bàsica.
+---
 
-### 😡 `insultActor()`
-Prova l’`InsultActor`, que pot retornar insults aleatoris, afegir-ne i retornar-los tots. També es veu la interacció amb missatges personalitzats.
+## 🚀 Available Tests (MainFunctions)  
 
-### 🔥 `firewallDecorator()`
-Aplica el `FirewallDecorator` per bloquejar missatges no autoritzats entre actors. Inclou proves amb `InsultActor`.
+- ✅ **testHelloWorld()** → Creates a basic actor, sends "Hello World!" and "Bye!" messages, and shows basic communication.  
+- 😡 **insultActor()** → Tests the `InsultActor`, which can return random insults, add new ones, and list all insults.  
+- 🔥 **firewallDecorator()** → Applies `FirewallDecorator` to block unauthorized messages between actors (tested with `InsultActor`).  
+- ⚠️ **lambdaFirewallDecorator()** → Uses `LambdaFirewallDecorator` with `FirewallDecorator` to filter messages via lambda rules.  
+- 🔐 **encryptionDecorator()** → Adds encryption to messages with `EncryptionDecorator`, combined with other decorators (Encryption + Firewall + LambdaFirewall).  
+- 🔁 **ringActor()** → Creates 100 actors in a ring and measures message transmission performance.  
+- 🏓 **pimPom(int numMessages)** → Simulates a Pim-Pom conversation between two actors until a given number of messages is reached.  
+- 🧙 **dynamicProxy()** → Uses `DynamicProxy` to transform an actor into an `IService` interface, allowing RPC-like calls (`getInsult()`, `addInsult()`).  
+- 🧪 **allTest()** → Runs all tests sequentially.  
 
-### ⚠️ `lambdaFirewallDecorator()`
-Prova un `LambdaFirewallDecorator` combinat amb `FirewallDecorator` per a filtrar missatges segons regles lambda. Es mostra amb actors normals i d’insults.
+---
 
-### 🔐 `encryptionDecorator()`
-Combina `EncryptionDecorator` amb els altres decoradors per encriptar missatges i afegir seguretat a la comunicació. També es prova una cadena de decoradors: Encryption + Firewall + LambdaFirewall sobre `InsultActor`.
+## 🧠 Design Patterns Used  
 
-### 🔁 `ringActor()`
-Crea 100 actors i els connecta en un anell. Es mesura el temps de transmissió d’un missatge en cadena.
+- **Actor Model** → Asynchronous message-based communication between entities.  
+- **Decorator** → Dynamically adds functionality to actors without changing their original logic.  
+- **Proxy** → Represents actors remotely.  
+- **Dynamic Proxy** → Dynamically implements interfaces for method calls on actors.  
 
-### 🏓 `pimPom(int numMissatges)`
-Simula una conversa Pim-Pom entre dos actors, alternant missatges fins a arribar a un nombre determinat.
+---
 
-### 🧙 `dynamicProxy()`
-Utilitza `DynamicProxy` per transformar l’actor en una interfície `IService`. Permet trucades tipus RPC (Remote Procedure Call) com `getInsult()` i `addInsult()`.
+## 🔧 Requirements  
 
-### 🧪 `allTest()`
-Executa tots els tests anteriors de manera consecutiva.
-
-## 🧠 Patrons de disseny utilitzats
-
-- **Actor Model**: Comunicació entre entitats mitjançant missatgeria asíncrona.
-- **Decorator**: Afegeix funcionalitats a actors sense modificar-ne la lògica original.
-- **Proxy**: Permet representar actors remotament.
-- **Dynamic Proxy**: Implementa interfícies dinàmicament per trucar mètodes sobre actors.
-
-## 🔧 Requisits
-
-- Java 17 o superior
-- IDE com IntelliJ o Eclipse per executar els tests
-
-## 📎 Exemple de sortida
-
+- **Java 17** or higher  
+- An IDE such as **IntelliJ** or **Eclipse** to run the tests  
